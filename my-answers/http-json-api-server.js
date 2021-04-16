@@ -22,6 +22,14 @@ let server = http.createServer(function callback(request, response) {
             let jsonString = JSON.stringify(output)
             response.end(jsonString)
         }
+        if (myPath.pathname === '/api/unixtime'){
+            let myTime = new Date(myPath.searchParams.get('iso'))
+            let output = {
+                "unixtime": myTime.getTime()
+            }
+            let jsonString = JSON.stringify(output)
+            response.end(jsonString)
+        }
     }
 })
 server.listen(myPort)
